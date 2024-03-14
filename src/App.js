@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard';
+import ProductsManagement from './components/Products/Products';
+import NotFound from './components/NotFound';
+import OrdersManagement from './components/Orders/Orders';
+import DeliveryManagement from './components/Delivery/Delivery';
+import Header from './components/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Header/>
+       <Routes>
+        <Route path='/' element={<Dashboard/>}/>
+        <Route path='/products' element={<ProductsManagement/>}/>
+        <Route path='/orders' element={<OrdersManagement/>}/>
+        <Route path='/delivery' element={<DeliveryManagement/>}/>
+        <Route  path='*' element={<NotFound/>}/>
+       </Routes>
+       <Footer/>
+      </BrowserRouter>
+
     </div>
   );
 }
